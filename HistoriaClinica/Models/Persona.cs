@@ -52,4 +52,35 @@ namespace HistoriaClinica.Models
             else { return "Anciano"; }
         }
     }
+
+    public class Afiliacion
+    {
+        public Afiliacion(int tipoRegimen, int semanasCotizadas, DateTime fechaIngresoSistemaSalud)
+        {
+            this.tipoRegimen = tipoRegimen;
+            this.semanasCotizadas = semanasCotizadas;
+            this.fechaIngresoSistemaSalud = fechaIngresoSistemaSalud;
+        }
+
+        public int tipoRegimen { get; set; }
+        public int semanasCotizadas { get; set; }
+        public DateTime fechaIngresoSistemaSalud { get; set; }
+
+    }
+
+    public enum nombresEps
+    {
+        Sura, NuevaEPS, SaludTotal, Sanitas, Savia
+    }
+
+    public class Eps
+    {
+        public Eps(DateTime fechaIngresoEps, nombresEps nombreEps)
+        {
+            this.fechaIngresoEps = fechaIngresoEps;
+            this.nombreEps = nombreEps;
+        }
+        public DateTime fechaIngresoEps { get; set; }
+        public nombresEps nombreEps { get; set; }
+    }
 }
