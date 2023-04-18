@@ -12,12 +12,12 @@ namespace HistoriaClinica.Models
         public Eps eps { get; set; }
 
         public Paciente(string nombre, string apellidos, int id, DateTime fechaNacimiento, string genero,
-                        int tipoRegimen, int semanasCotizadas, DateTime fechaIngresoSistemaSalud,
+                        tipoRegimen regimen, int semanasCotizadas, DateTime fechaIngresoSistemaSalud,
                         DateTime fechaIngresoEps, nombresEps nombreEps,
-                        string historiaClinica, string enfermedadRelevante, int cantidadEnfermedades, int tipoAfiliacion, int costosTratamientos)
+                        string historiaClinica, string enfermedadRelevante, int cantidadEnfermedades, tipoAfiliacion tipoAfiliacion, int costosTratamientos)
         {
             persona = new Persona(nombre, apellidos, id, fechaNacimiento, genero);
-            afiliacion = new Afiliacion(tipoRegimen, semanasCotizadas, fechaIngresoSistemaSalud);
+            afiliacion = new Afiliacion(regimen, semanasCotizadas, fechaIngresoSistemaSalud);
             eps = new Eps(fechaIngresoEps, nombreEps);
 
             this.historiaClinica = historiaClinica;
@@ -29,7 +29,12 @@ namespace HistoriaClinica.Models
         public string historiaClinica { get; set; }
         public string enfermedadRelevante { get; set; }
         public int cantidadEnfermedades { get; set; }
-        public int tipoAfiliacion { get; set; }
-        public int costosTratamientos { get; set; }
+        public tipoAfiliacion tipoAfiliacion { get; set; }
+        public double costosTratamientos { get; set; }
+    }
+
+    public enum tipoAfiliacion
+    {
+        Cotizante, beneficiario
     }
 }

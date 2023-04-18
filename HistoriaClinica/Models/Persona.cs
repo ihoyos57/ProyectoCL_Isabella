@@ -29,40 +29,30 @@ namespace HistoriaClinica.Models
 
         private string obtenerRangoEdad()
         {
-            if ((edad >= 0 && edad < 12))
-            {
-                return "Niño";
-            }
-            else if (edad >= 12 && edad < 18)
-            {
-                return "Adolescente";
-            }
-            else if (edad >= 18 && edad < 30)
-            {
-                return "Joven";
-            }
-            else if (edad >= 30 && edad < 55)
-            {
-                return "Adulto";
-            }
-            else if (edad >= 55 && edad < 75)
-            {
-                return "Adulto Mayor";
-            }
+            if ((edad >= 0 && edad < 12)) { return "Niño"; }
+            else if (edad >= 12 && edad < 18) { return "Adolescente"; }
+            else if (edad >= 18 && edad < 30) { return "Joven"; }
+            else if (edad >= 30 && edad < 55) { return "Adulto"; }
+            else if (edad >= 55 && edad < 75) { return "Adulto Mayor"; }
             else { return "Anciano"; }
         }
     }
 
+    public enum tipoRegimen
+    {
+        Contributivo, Subsidiado
+    }
+
     public class Afiliacion
     {
-        public Afiliacion(int tipoRegimen, int semanasCotizadas, DateTime fechaIngresoSistemaSalud)
+        public Afiliacion(tipoRegimen regimen, int semanasCotizadas, DateTime fechaIngresoSistemaSalud)
         {
-            this.tipoRegimen = tipoRegimen;
+            this.regimen = regimen;
             this.semanasCotizadas = semanasCotizadas;
             this.fechaIngresoSistemaSalud = fechaIngresoSistemaSalud;
         }
 
-        public int tipoRegimen { get; set; }
+        public tipoRegimen regimen { get; set; }
         public int semanasCotizadas { get; set; }
         public DateTime fechaIngresoSistemaSalud { get; set; }
 
