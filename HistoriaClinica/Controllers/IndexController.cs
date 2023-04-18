@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Services;
 
 namespace HistoriaClinica.Controllers
 {
@@ -11,11 +12,20 @@ namespace HistoriaClinica.Controllers
         // GET: Index
         public ActionResult Index()
         {
+
             return View();
         }
-
-        public ActionResult registro()
+        [HttpPost]
+        public ActionResult registro(FormCollection form)
         {
+            if (form["submitButton"] != null)
+            {
+                Console.WriteLine("Holaaa");
+            }
+            else
+            {
+                // El formulario se envió sin hacer clic en el botón
+            }
             return View();
         }
     }
