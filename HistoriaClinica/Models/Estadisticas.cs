@@ -12,6 +12,25 @@ namespace HistoriaClinica.Models
         public Estadisticas(List<Paciente> pacientes)
         {
             this.pacientes = pacientes;
+
+            costosEps.Add(nombresEps.Sura, 0);
+            costosEps.Add(nombresEps.NuevaEPS, 0);
+            costosEps.Add(nombresEps.SaludTotal, 0);
+            costosEps.Add(nombresEps.Sanitas, 0);
+            costosEps.Add(nombresEps.Savia, 0);
+
+            porcentajesCostosEps.Add(nombresEps.Sura, 0);
+            porcentajesCostosEps.Add(nombresEps.NuevaEPS, 0);
+            porcentajesCostosEps.Add(nombresEps.SaludTotal, 0);
+            porcentajesCostosEps.Add(nombresEps.Sanitas, 0);
+            porcentajesCostosEps.Add(nombresEps.Savia, 0);
+
+            porcentajePacientesPorRangoEdad.Add("Niño", 0);
+            porcentajePacientesPorRangoEdad.Add("Adolescente", 0);
+            porcentajePacientesPorRangoEdad.Add("Joven", 0);
+            porcentajePacientesPorRangoEdad.Add("Adulto", 0);
+            porcentajePacientesPorRangoEdad.Add("Adulto Mayor", 0);
+            porcentajePacientesPorRangoEdad.Add("Anciano", 0);
         }
 
         public Dictionary<nombresEps, double> costosEps = new Dictionary<nombresEps, double>();
@@ -22,8 +41,10 @@ namespace HistoriaClinica.Models
         public double porcentajePacientesSinEnfermedad { get; set; } = 0;
         public double porcentajePacientesRegimenContributivo { get; set; } = 0;
         public double porcentajePacientesRegimenSubsidiado { get; set; } = 0;
+        public double porcentajePacientesCotizante { get; set; } = 0;
+        public double porcentajePacientesBeneficiario { get; set; } = 0;
         public int totalPacientesRelevanteCancer { get; set; } = 0;
-        public Persona pacienteMayorCosto { get; set; }
+        public Persona? pacienteMayorCosto { get; set; }
 
         private void calcularTotalCostosPorEps()
         {
@@ -110,7 +131,7 @@ namespace HistoriaClinica.Models
                 if (paciente.persona.rangoEdad == "Niño") { cantidadNinos++; }
                 else if (paciente.persona.rangoEdad == "Adolescente") { cantidadAdolescente++; }
                 else if (paciente.persona.rangoEdad == "Joven") { cantidadJovenes++; }
-                else if (paciente.persona.rangoEdad == "Adultos") { cantidadAdultos++; }
+                else if (paciente.persona.rangoEdad == "Adulto") { cantidadAdultos++; }
                 else if (paciente.persona.rangoEdad == "Adulto Mayor") { cantidadAdultoMayor++; }
                 else if (paciente.persona.rangoEdad == "Anciano") { cantidadAncianos++; }
             }
@@ -118,7 +139,7 @@ namespace HistoriaClinica.Models
             porcentajePacientesPorRangoEdad["Niño"] = (cantidadNinos * 100) / pacientes.Count;
             porcentajePacientesPorRangoEdad["Adolescente"] = (cantidadAdolescente * 100) / pacientes.Count;
             porcentajePacientesPorRangoEdad["Joven"] = (cantidadJovenes * 100) / pacientes.Count;
-            porcentajePacientesPorRangoEdad["Adultos"] = (cantidadAdultos * 100) / pacientes.Count;
+            porcentajePacientesPorRangoEdad["Adulto"] = (cantidadAdultos * 100) / pacientes.Count;
             porcentajePacientesPorRangoEdad["Adulto Mayor"] = (cantidadAdultoMayor * 100) / pacientes.Count;
             porcentajePacientesPorRangoEdad["Anciano"] = (cantidadAncianos * 100) / pacientes.Count;
         }
@@ -147,6 +168,8 @@ namespace HistoriaClinica.Models
                 if (paciente.tipoAfiliacion == tipoAfiliacion.Cotizante) { cantidadCotizante++; }
                 else if (paciente.tipoAfiliacion == tipoAfiliacion.beneficiario) { cantidadBeneficierio++; }
             }
+            porcentajePacientesCotizante = (cantidadCotizante * 100) / pacientes.Count;
+            porcentajePacientesBeneficiario = (cantidadBeneficierio * 100) / pacientes.Count;
         }
 
         private void totalPacientesConCancer()
