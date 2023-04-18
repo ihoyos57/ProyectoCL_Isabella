@@ -134,7 +134,6 @@
     <None Include="packages.config" />
     <Content Include="Views\Index\Index.cshtml" />
     <Content Include="Views\Index\registro.cshtml" />
-    <Content Include="Views\Index\estadisticas.cshtml" />
     <Content Include="Scripts\vendor\bootstrap\css\bootstrap-grid.css.map" />
     <Content Include="Scripts\vendor\bootstrap\css\bootstrap-grid.min.css.map" />
     <Content Include="Scripts\vendor\bootstrap\css\bootstrap-grid.rtl.css.map" />

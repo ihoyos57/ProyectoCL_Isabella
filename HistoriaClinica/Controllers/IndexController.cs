@@ -18,10 +18,5 @@ namespace HistoriaClinica.Controllers
         {
             return View();
         }
-
-        public ActionResult estadisticas()
-        {
-            return View();
-        }
     }
 }
