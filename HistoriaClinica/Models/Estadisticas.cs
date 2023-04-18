@@ -44,7 +44,7 @@ namespace HistoriaClinica.Models
         public double porcentajePacientesCotizante { get; set; } = 0;
         public double porcentajePacientesBeneficiario { get; set; } = 0;
         public int totalPacientesRelevanteCancer { get; set; } = 0;
-        public Persona? pacienteMayorCosto { get; set; }
+        public Persona pacienteMayorCosto { get; set; }
 
         private void calcularTotalCostosPorEps()
         {
