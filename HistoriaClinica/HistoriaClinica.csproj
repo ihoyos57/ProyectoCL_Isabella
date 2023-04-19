@@ -125,6 +125,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Estadisticas.cs" />
+    <Compile Include="Models\EstadisticaViewModel.cs" />
     <Compile Include="Models\Paciente.cs" />
     <Compile Include="Models\Persona.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
