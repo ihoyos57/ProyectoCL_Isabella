@@ -12,7 +12,6 @@ namespace HistoriaClinica.Controllers
         // GET: Index
         public ActionResult Index()
         {
-
             return View();
         }
         [HttpPost]
